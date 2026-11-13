@@ -33,10 +33,12 @@ describe('Firefox actions', () => {
   let commands: Command[];
   let provider: ReturnType<typeof createFirefoxProvider>;
   let runtime: ReturnType<typeof createProviderRuntime>;
+  let navigateOnClick: boolean;
 
   beforeEach(async () => {
     socket = undefined;
     commands = [];
+    navigateOnClick = false;
     listener = new WebSocketServer({ host: '127.0.0.1', port: 0, path: '/session' });
     await new Promise<void>(resolve => listener.once('listening', resolve));
     port = (listener.address() as AddressInfo).port;
@@ -47,6 +49,13 @@ describe('Firefox actions', () => {
         const params = message.params ?? {};
         commands.push({ method: message.method, params });
         const result = reply(message.method, params);
+        if (navigateOnClick && message.method === 'input.performActions') {
+          client.send(JSON.stringify({
+            type: 'event',
+            method: 'browsingContext.navigationStarted',
+            params: { context: 'existing' },
+          }));
+        }
         if (result) client.send(JSON.stringify({ id: message.id, type: 'success', result }));
         else client.send(JSON.stringify({ id: message.id, type: 'error', error: 'unknown command', message: message.method }));
       });
@@ -116,6 +125,9 @@ describe('Firefox actions', () => {
       pointerType: 'mouse',
       requestedTarget: { kind: 'ref', selector: '@e1', role: 'button', name: 'Save' },
     });
+    navigateOnClick = true;
+    await expect(invoke('page_click', { tabId: id, selector: '@e1', clickMode: 'mouse' }))
+      .resolves.toMatchObject({ clicked: true, dispatchMode: 'trusted-input' });
     expect(commands.find(command => command.method === 'browsingContext.locateNodes')?.params).toMatchObject({
       context: 'existing',
       locator: { type: 'css', value: 'button.save' },
@@ -183,6 +195,23 @@ describe('Firefox actions', () => {
       method: 'browsingContext.handleUserPrompt',
       params: { context: 'existing', accept: true, userText: 'Lin' },
     });
+    emit('browsingContext.userPromptOpened', {
+      context: 'existing',
+      type: 'alert',
+      message: 'Wait',
+    });
+    const alert = await vi.waitFor(async () => {
+      const value = await invoke('page_snapshot', { tabId: id }) as { dialog?: { id: string; type?: string } };
+      expect(value.dialog?.type).toBe('alert');
+      return value;
+    });
+    emit('browsingContext.navigationStarted', { context: 'existing' });
+    await vi.waitFor(async () => {
+      const value = await invoke('page_snapshot', { tabId: id }) as { dialog?: { id: string } };
+      expect(value.dialog).toBeUndefined();
+    });
+    await expect(invoke('page_press', { tabId: id, dialogId: alert.dialog!.id, key: 'Enter' }))
+      .rejects.toThrow('dialogId is stale');
   });
 
   it('captures a console log and fulfills a blocked request from set_mock', async () => {

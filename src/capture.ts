@@ -191,7 +191,10 @@ export class FirefoxObservation {
       const context = this.contextOf(params);
       if (!context) return;
       this.browser.clearRefs(context);
-      this.browser.dialogsFor(context).invalidate();
+      // Navigation drops element refs. An open native dialog is gone with the old page.
+      // A click that starts navigation has no dialog, and must still finish.
+      const dialogs = this.browser.dialogsFor(context);
+      if (dialogs.pending) dialogs.invalidate();
       this.browser.resetWebMcp(context);
     });
   }
