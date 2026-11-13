@@ -1,0 +1,46 @@
+import type { ProviderAction } from '@mearl/provider';
+
+/** Actions implemented over WebDriver BiDi. App simulation and extension-only actions stay undeclared. */
+export const FIREFOX_ACTIONS = [
+  'get_capabilities',
+  'tab_list',
+  'tab_open',
+  'tab_close',
+  'tab_checkpoint',
+  'capture_checkpoint',
+  'page_navigate',
+  'page_snapshot',
+  'page_frames',
+  'page_click',
+  'page_hover',
+  'page_type',
+  'page_press',
+  'page_scroll',
+  'page_drag',
+  'page_eval',
+  'page_wait',
+  'page_inspect',
+  'page_upload',
+  'page_screenshot',
+  'get_requests',
+  'get_logs',
+  'get_events',
+  'set_mock',
+  'get_mocks',
+  'set_rule',
+  'get_rules',
+  'page_call_tool',
+  'send_request',
+  'get_cookie',
+  'set_cookie',
+  'set_timezone',
+  'set_device_emulation',
+  'run_actions',
+] as const satisfies readonly ProviderAction[];
+
+export const FIREFOX_LIMITATIONS = [
+  'Firefox does not support App profiles or device shells. Those require CDP document interception and child-frame attachment.',
+  'Header rules treat a navigated document as main_frame. BiDi does not identify the parent frame on an intercepted request, so sub_frame-only rules do not match iframe loads.',
+  'WebMCP is discovered by probing the page sandbox. Firefox does not emit Chrome WebMCP tool-change events.',
+  'Tab groups, downloads, recordings, and extension permissions stay on the Chrome extension.',
+];
