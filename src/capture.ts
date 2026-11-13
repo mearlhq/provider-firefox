@@ -7,6 +7,7 @@ import {
   createRequestBufferAccounting,
   describeBrowserCapabilities,
   formatTrackingEvent,
+  HeaderRuleSet,
   matchesTextPattern,
   nextCaptureSequence,
   prepareMockResponseHeaders,
@@ -29,7 +30,6 @@ import {
 import type { JsonObject } from '@mearl/provider';
 import { parseTrackingRequest } from '@mearl/plugin-tracking';
 import { FIREFOX_ACTIONS, FIREFOX_LIMITATIONS } from './capabilities.js';
-import { HeaderRuleSet } from './header-rules.js';
 import type { FirefoxBrowser } from './browser.js';
 import { bytesValue } from './values.js';
 

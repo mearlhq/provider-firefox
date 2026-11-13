@@ -6,7 +6,6 @@ import type {
 } from '@mearl/provider';
 import { BiDiConnection, BiDiError } from './bidi.js';
 import { FirefoxBrowser } from './browser.js';
-import './browser-capabilities.js';
 import { FIREFOX_ACTIONS } from './capabilities.js';
 
 const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')) as {

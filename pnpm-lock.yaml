@@ -9,14 +9,14 @@ importers:
   .:
     dependencies:
       '@mearl/browser-core':
-        specifier: 3.0.12
-        version: 3.0.12
+        specifier: 3.1.0
+        version: 3.1.0
       '@mearl/plugin-tracking':
-        specifier: 3.0.12
-        version: 3.0.12
+        specifier: 3.1.0
+        version: 3.1.0
       '@mearl/provider':
-        specifier: 3.0.12
-        version: 3.0.12
+        specifier: 3.1.0
+        version: 3.1.0
       tough-cookie:
         specifier: ^6.0.0
         version: 6.1.0
@@ -51,22 +51,22 @@ packages:
   '@jridgewell/sourcemap-codec@1.6.0':
     resolution: {integrity: sha512-T7jf+5zgsZHwNJ4lvQ7/aezbyk0nNX+zJVWpmHA7VYsEx7a7qr5Rg5IbtJFqkgze5Y2sruq1RUY8Q837Od7iFw==}
 
-  '@mearl/browser-core@3.0.12':
-    resolution: {integrity: sha512-vq+tFFpIL5MBiUMr8mN8kDt6xKWGQhgpPjZkpkuKbC1HnJPANyPdbLyl1vnZvHp8NJx+Vp4/IZFY2TOwmliK5A==}
+  '@mearl/browser-core@3.1.0':
+    resolution: {integrity: sha512-FhZ+Nz4MQrn181pSOBd3uPtvfuN+15sh5dd53JX0Ar00QJa6yLrL5fGx50dHEF/yVp9dh5rRZ/tvZl/YPDBhqQ==}
 
-  '@mearl/daemon-core@3.0.12':
-    resolution: {integrity: sha512-GDZOXuuZkS27BeYMwgkmJBJkd7QmH2LEIgmbYwyICopNEQ4TTDTxyAi+6LMfWIjvF/NEi7Ntk44Un7MC7f6PQw==}
+  '@mearl/daemon-core@3.1.0':
+    resolution: {integrity: sha512-mPMhsBQvcfNjM8hoLHX2KqIPqaMjLVlnMXf9cszGjJ7T3YfSa2nWvlxNUexSh7A9ysy+F46cj8wR3q9Kap3F5w==}
     engines: {node: '>=20.18.0'}
 
-  '@mearl/plugin-tracking@3.0.12':
-    resolution: {integrity: sha512-bMu6nNuIrWRFM8dYA8d5a31y2yGry8Sl9bPRwId6t5oFXKvnOJCFLbwCj7y/SbH8wZFVaSwCh57ypiZEdfuYrw==}
+  '@mearl/plugin-tracking@3.1.0':
+    resolution: {integrity: sha512-wyaC6G6IOgwr8upYe765yHKPxU9EBxShcp3jr72Fhec/+YAEaZH0b74uAx65CXxK1/VtJkYH+xewRPdAkTL3Nw==}
     engines: {node: '>=20.18.0'}
 
-  '@mearl/preset@3.0.12':
-    resolution: {integrity: sha512-9IbiHTa7SxftqmOy4QfAiJQ7w6Oi3wUi1ma1+Gm2NPwf1rHhmYc9Dt2OuIy8pZx0QBY8M7TSYe8H4YphTgkp8w==}
+  '@mearl/preset@3.1.0':
+    resolution: {integrity: sha512-Up1WhPifspaTgys84OUEVm963SztGmw4d6s5uRkD0DLT9RFQ6fyv0riufJUOZtPjsp4shuz5LHaWX5LMJuRrYg==}
 
-  '@mearl/provider@3.0.12':
-    resolution: {integrity: sha512-S1f+9i/KOQqHO4tc88d2xiwoBxUE3r+WXf1FJ2JgzyCtQRhfnxtroVbP2RbQxtkfqSOYq18hUQX3c9zhfnraXw==}
+  '@mearl/provider@3.1.0':
+    resolution: {integrity: sha512-7VXMniiEI1DWGOpmQg6Bs+yiWroaFjERNVfU0qS3ud1o+DwXv3CDnOY9J45cqqc4BfP9T56+CV+d1Pkr9mrrRQ==}
     engines: {node: '>=20.18.0'}
 
   '@napi-rs/wasm-runtime@1.2.6':
@@ -543,24 +543,24 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.6.0': {}
 
-  '@mearl/browser-core@3.0.12': {}
+  '@mearl/browser-core@3.1.0': {}
 
-  '@mearl/daemon-core@3.0.12':
+  '@mearl/daemon-core@3.1.0':
     dependencies:
-      '@mearl/preset': 3.0.12
+      '@mearl/preset': 3.1.0
 
-  '@mearl/plugin-tracking@3.0.12':
+  '@mearl/plugin-tracking@3.1.0':
     dependencies:
-      '@mearl/browser-core': 3.0.12
+      '@mearl/browser-core': 3.1.0
 
-  '@mearl/preset@3.0.12':
+  '@mearl/preset@3.1.0':
     dependencies:
       semver: 7.8.6
 
-  '@mearl/provider@3.0.12':
+  '@mearl/provider@3.1.0':
     dependencies:
-      '@mearl/browser-core': 3.0.12
-      '@mearl/daemon-core': 3.0.12
+      '@mearl/browser-core': 3.1.0
+      '@mearl/daemon-core': 3.1.0
 
   '@napi-rs/wasm-runtime@1.2.6(@emnapi/core@2.0.0-beta.2)(@emnapi/runtime@2.0.0-beta.2)':
     dependencies:

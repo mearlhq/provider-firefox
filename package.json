@@ -28,9 +28,9 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "@mearl/browser-core": "3.0.12",
-    "@mearl/plugin-tracking": "3.0.12",
-    "@mearl/provider": "3.0.12",
+    "@mearl/browser-core": "3.1.0",
+    "@mearl/plugin-tracking": "3.1.0",
+    "@mearl/provider": "3.1.0",
     "tough-cookie": "^6.0.0",
     "ws": "^8.22.0"
   },
